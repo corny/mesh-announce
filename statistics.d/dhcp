@@ -1,0 +1,5 @@
+dict(
+    (str(k), int(v))
+    for (k, v) in import_module('dbus').Interface(import_module('dbus').SystemBus().get_object("uk.org.thekelleys.dnsmasq", "/uk/org/thekelleys/dnsmasq"), dbus_interface="uk.org.thekelleys.dnsmasq").GetMetrics().items()
+    if import_module('re').match('^(dhcp_|leases_)', str(k))
+)
